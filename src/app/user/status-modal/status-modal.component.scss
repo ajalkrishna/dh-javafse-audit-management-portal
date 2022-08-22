@@ -1,0 +1,32 @@
+.check img {
+    -webkit-animation: check-tick 1s linear both;
+    animation: check-tick 1s linear both;
+    color: green;
+}
+
+@keyframes check-tick {
+    0% {
+        -webkit-transform: scale(1);
+        transform: scale(1)
+    }
+
+    100% {
+        -webkit-transform: scale(.5);
+        transform: scale(.5)
+    }
+}
+
+@keyframes check-tick {
+    0% {
+        -webkit-transform: scale(.5);
+        transform: scale(.5)
+    }
+
+    100% {
+        -webkit-transform: scale(1);
+        transform: scale(1)
+    }
+}
+hr{
+    height: 1rem;
+}

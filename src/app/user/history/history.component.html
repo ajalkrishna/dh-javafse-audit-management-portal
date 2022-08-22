@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="warning">
+        <div class="dots" *ngIf="stopLoading"></div>
+        <h2 class="text-center text-danger">{{emptyMessage}}</h2>
+
+    </div>
+    <div class="accordion mt-3" id="accordionFlushExample">
+        <div class="accordion-item" *ngFor="let request of pastRequests ; index as ind">
+            <h2 class="accordion-header" id="flush-headingOne">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                [attr.data-bs-target]="'#request'+ind">
+                    <span >{{request.projectName}}</span>
+                </button>
+            </h2>
+            <div [id]="'request'+ind" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+                data-bs-parent="#accordionFlushExample" >
+                <div class="accordion-body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12 col-md-6 col-lg-6">
+                                <h4>Audit Request</h4>
+                                <p>Project Name : <span>{{request.projectName}}</span></p>
+                                <p>Project Manager Name : <span>{{request.projectManagerName}}</span></p>
+                                <p>Application Owner Name : <span>{{request.applicationOwnerName}}</span></p>
+                                <p>Audit Date & Type : <span>{{request.auditDate}}, {{request.auditType}}</span></p>
+                            </div>
+                            <div class="col-12 col-md-6 col-lg-6">
+                                <h4>Evaluation Status</h4>
+                                <p>Project Excecution Status : <span>{{request.projectExcecutionStatus}}</span></p>
+                                <p>Remedial action duration : <span>{{request.remedialActionDuration}}</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,115 @@
+<div class="dashboard_page">
+    <div class="container mx-auto">
+        <div class="row form_template">
+            <div class="col-lg-10 mx-auto">
+                <div class="form_heading m-3 p-2">
+                    <h2 class="text-center">AUDIT REQUEST FORM</h2>
+                </div>
+                <p class="text-danger ms-3" *ngIf="!auditRequest.valid">All fields are mandatory*</p>
+
+                <form [formGroup]="auditRequest" (ngSubmit)="submitAuditRequest()">
+                    <div class="row">
+                        <div class="col-12 col-md-5 col-lg-5  mb-3">
+                            <label>Project Name <span class="asterisk">*</span></label>
+                            <input type="text" class="form-control" formControlName="projectName">
+                            <div *ngIf="projectName.invalid && (projectName.dirty || projectName.touched)">
+                                <div *ngIf="projectName.errors?.['required']">
+                                    <p class="text-danger">Project name cannot be empty!!</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-5 ms-auto mb-3">
+                            <label>Project Manager Name <span class="asterisk">*</span></label>
+                            <input type="text" class="form-control" formControlName="projectManagerName">
+                            <div
+                                *ngIf="projectManagerName.invalid && (projectManagerName.dirty || projectManagerName.touched)">
+                                <div *ngIf="projectManagerName.errors?.['required']">
+                                    <p class="text-danger">Enter a valid name!!!!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-md-5 col-lg-5 mb-3">
+                            <label>Project Owner Name <span class="asterisk">*</span></label>
+                            <input type="text" class="form-control" formControlName="projectOwnerName">
+                            <div
+                                *ngIf="projectOwnerName.invalid && (projectOwnerName.dirty || projectOwnerName.touched)">
+                                <div *ngIf="projectOwnerName.errors?.['required']">
+                                    <p class="text-danger">Project owner name cannot be empty!!</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-5 ms-auto mb-3">
+                            <label>Application Owner Name <span class="asterisk">*</span></label>
+                            <input type="text" class="form-control" formControlName="applicationOwnerName">
+                            <div
+                                *ngIf="applicationOwnerName.invalid && (applicationOwnerName.dirty || applicationOwnerName.touched)">
+                                <div *ngIf="applicationOwnerName.errors?.['required']">
+                                    <p class="text-danger">Enter a valid application owner name!!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="audit_type">
+                        <div class="form-label">Choose Audit type <span class="asterisk">*</span></div>
+                        <select class="w-100" (input)="chooseAudit($event)">
+                            <option selected>Choose...</option>
+                            <option value="Internal">Internal</option>
+                        </select>
+                    </div>
+
+                    <div class="pb-4 mt-3" *ngIf="auditQuestions.length!=0">
+                        <div *ngFor="let obj of auditQuestions; index as ind" class="row mb-4">
+                            <div class="col-11 col-md-11 col-lg-10 mx-auto">
+                                <div class="row">
+                                    <div class="col-12 col-md-6 col-lg-8">
+                                        <div class="question-text">
+                                            <p>{{obj.question}}<span class="asterisk">*</span></p>
+                                        </div>
+                                    </div>
+                                    <div class="col-1 col-md-2 col-lg-2 mx-auto">
+                                        <div class="form-check d-block mx-auto">
+                                            <input class="form-check-input" type="radio" [name]="'confirmtion'+ind"
+                                                id="yes-confirmation" value="YES" (input)="chooseOption($event,ind)">
+                                            <label class="form-check-label mx-auto" for="yes-confirmation">
+                                                YES
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-1 col-md-2 col-lg-2 mx-auto">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" [name]="'confirmtion'+ind"
+                                                id="no-confirmation" value="NO" (input)="chooseOption($event,ind)">
+                                            <label class="form-check-label" for="no-confirmation">
+                                                NO
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn d-block mx-auto p-2 submit_btn mt-3" type="submit" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal"
+                        [disabled]="auditRequest.invalid || validOption || isAuditTypeChosen">Submit Audit
+                        Request</button>
+                </form>
+            </div>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered mx-auto">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <app-status-modal [response]="auditResponse"></app-status-modal>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                            (click)="goToHistory()">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

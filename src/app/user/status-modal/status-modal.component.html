@@ -1,0 +1,10 @@
+<div class="container p-4" *ngIf="response!=null">
+    <div class="check mb-2">
+        <img src="../../../assets/check-solid.svg" width="50px" class="d-block mx-auto">
+    </div>
+    <hr [ngStyle]="{'color':response.projectExcecutionStatus== 'RED'?'red':'green'}">
+    <div class="response_data" *ngIf="response!=null">
+        <p >Project Excecution Status : <span [ngStyle]="{'color':response.projectExcecutionStatus== 'RED'?'red':'green'}" class="fw-bold">{{response.projectExcecutionStatus}}</span></p>
+        <p>Remedial Action Duration: {{response.remedialActionDuration}}</p>
+    </div>
+</div>

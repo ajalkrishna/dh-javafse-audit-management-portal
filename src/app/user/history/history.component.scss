@@ -1,0 +1,22 @@
+.warning{
+    margin-top: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dots:before {
+    display: block;
+    height: 3px;
+    width: 3px;
+    content: ' ';
+    animation: spin 0.8s infinite;
+    border-radius: 100%;
+    box-shadow: 20px 0 0 5px black, -20px 0 0 5px black;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}

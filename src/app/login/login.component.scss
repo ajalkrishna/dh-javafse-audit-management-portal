@@ -1,0 +1,72 @@
+.login_page {
+    background-color: #afc0ca2c;
+    height: 100vh;
+}
+
+.login_template {
+    min-height: 35rem;
+    background-color: rgb(255, 255, 255);
+    border-radius: 1rem;
+
+    .login_form {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .form-control {
+            background-color: transparent;
+            box-shadow: none;
+            border: 1px solid black;
+            border-left: 0;
+            border-radius: 0;
+        }
+
+        .input-group-text {
+            background-color: transparent;
+            border: 1px solid black;
+            border-right: none;
+            border-radius: 0;
+        }
+
+        .btn {
+            border: 1px solid black;
+            border-radius: 0;
+            padding: 0.2rem 2rem;
+            box-shadow: none;
+            transition: all 0.5s;
+            background-color: black;
+            color: white;
+        }
+
+        .btn:hover {
+            background-color: white;
+            color: black;
+            transform: scale(1.05);
+        }
+    }
+}
+
+.login_form_title h2 {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.login_illustration {
+    // background-image: url(../../assets/login-illustration.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+
+}
+
+.app_name {
+    // padding: 5rem 2rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    h4 {
+        font-family: Impact, Haettenschweiler;
+        font-size: 5rem;
+    }
+}
+
