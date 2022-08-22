@@ -7,8 +7,8 @@ import { Observable } from 'rxjs';
 })
 export class ApiService {
 
-  // SERVER_URI="http://audit-portal-lb-926233193.us-west-2.elb.amazonaws.com/audit-portal"
-  SERVER_URI="http://localhost:8500/audit-portal"
+  SERVER_URI="http://audit-portal-lb-926233193.us-west-2.elb.amazonaws.com/audit-portal"
+  // SERVER_URI="http://localhost:8500/audit-portal"
   constructor(private hc:HttpClient) { }
 
   authenticateUser(userLoginObj):Observable<any>{

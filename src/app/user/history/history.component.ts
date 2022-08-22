@@ -17,16 +17,16 @@ export class HistoryComponent implements OnInit {
   constructor(private api: ApiService) { }
 
   ngOnInit(): void {
+    this.api.getPastAuditRequests().subscribe(res => {
+      this.pastRequests = res;
+      if(res.length==0){
+        this.emptyMessage="No past requests found!!"
+        console.log(this.emptyMessage);
+        console.log(res)
+      }
+    })
     setTimeout(() => {
       this.stopLoading=false
-      this.api.getPastAuditRequests().subscribe(res => {
-        this.pastRequests = res;
-        if(res.length==0){
-          this.emptyMessage="No past requests found!!"
-          console.log(this.emptyMessage);
-          console.log(res)
-        }
-      })
     }, 3000);
     
   }

@@ -7,8 +7,8 @@ import { RouteGuard } from './route.guard';
 const routes: Routes = [
   { path: 'user', loadChildren: () => import('./user/user.module').then(m => m.UserModule),canActivate:[RouteGuard] },
   {path:"login",component:LoginComponent},
-  {path:"**",component:NoPageComponent},
-  {path:"",redirectTo:"login",pathMatch:"full"}
+  {path:"",redirectTo:"login",pathMatch:"full"},
+  {path:"**",component:NoPageComponent}
 ];
 
 @NgModule({
